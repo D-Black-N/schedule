@@ -1,0 +1,169 @@
+.content{
+    display: flex;
+}
+
+/* Autorization */
+.autorization-form{
+    position: relative;
+    margin: 20px;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 30px 30px 30px 30px 10px 30px;
+}
+
+input[type='text']{
+    height: 16pt;
+}
+
+label{
+    font-size: 13pt;
+    margin-left: 20px;
+    padding-top: 8px;
+}
+
+input#autorize{
+    font-size: 14pt;
+    height: 100%;
+    width: 50%;
+    min-width: 100px;
+    grid-row: 6/6;
+}
+
+/* Menu */
+ul{
+    display: flex;
+    margin-top: 0px;
+    width: 100%;
+    list-style: none;
+    background-color: #49688e;
+    padding: 0px;
+}
+
+li{
+    float: left;
+    height: auto;
+    background-color: #49688e;
+    width: 20%;
+    font-weight: bold;
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-top-width: 2px;
+    border-color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+li:hover{
+    background-color: #f4a024;
+    cursor: pointer;
+}
+
+li.clicked{
+    background-color: #f4a024;
+}
+
+h2{
+    margin:0px;
+}
+
+.buttons{
+    grid-row: 4/4;
+}
+
+/* Subject */
+.list{
+    width: 50%;
+    margin-left: 5%;
+    text-align: center;
+}
+
+.add{
+    width: 50%;
+    text-align: center;
+}
+
+.subject-form{
+    justify-content: center;
+    display: grid;
+    grid-template-rows: 30px 30px 10px;
+    text-align: left;
+}
+
+.subjects-table th, td{
+    text-align: left;
+}
+
+p.clicked {
+    width: max-content;
+    margin: 10px 0px;
+}
+
+p.clicked:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+}
+
+.message{
+    margin: 20px;
+    text-align: center;
+    color: red;
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.buttons #submit, button{
+    width: 48%;
+    margin: 0px 1%;
+    height: 100%;
+    font-size: 14pt;
+}
+
+/* Teachers.js */
+.teacher-subjects{
+    padding-left: 6%;
+}
+
+.select-subject {
+    display: none;
+}
+
+.teacher-form {
+    justify-content: center;
+    display: grid;
+    grid-auto-rows: 35px;
+    text-align: left;
+    grid-template-columns: 30vw 50px;
+}
+
+.teacher-form input#name {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+}
+
+.teacher-form select {
+    grid-column: 1;
+    grid-row: 3;
+    height: 30px;
+    display: none;
+}
+
+.teacher-form #enable-select {
+    grid-column: 2;
+    grid-row: 3;
+    width: 90%;
+    margin-left: 10%;
+    height: 30px;
+}
+
+.teacher-form #disable-select {
+    grid-column: 2;
+    grid-row: 4;
+    display: none;
+    width: 90%;
+    margin-left: 10%;
+    height: 30px;
+}
+

@@ -1,0 +1,179 @@
+/* Information.js */
+.inform{
+    width: 93%;
+    height: auto;
+    display: flex;
+    margin: 20px;
+}
+
+.logo{
+    height: 120px;
+    width: 120px;
+    margin-left: 50px;
+}
+
+.text{
+    width: 90vw;
+    margin-left: 20px;
+}
+
+.name{
+    margin-top: 25px;
+    color: #294a70;
+    display: flex;
+    font-size: 22pt;
+    font-weight: bold;
+}
+
+.address{
+    color: #666666;
+    font-size: 12pt;
+    display: flex;
+}
+
+@media (max-width: 500px) {
+    p{
+        margin: 0px;
+    }
+    .inform{
+        display: block;
+        text-align: center;
+    }
+
+    .logo{
+        height: 100px;
+        width: 100px;
+        margin: 0px;
+    }
+
+    .text{
+        width: 100%;
+        margin: 0px;
+        text-align: center;
+    }
+
+    .name{
+        margin-top: 10px;
+        color: #294a70;
+        font-size: 16pt;
+        font-weight: bold;
+        text-align: center;
+        display: inline;
+    }
+    
+    .address{
+        color: #666666;
+        font-size: 10pt;
+    }
+}
+
+/* Content.js */
+.content{
+    display: flex;
+    margin: 10px;
+    height: 70vh;
+}
+
+.table{
+    width: 65vw;
+    height: inherit;
+    padding-left: 4vw;
+}
+
+.clocks{
+    width: 35vw;
+    text-align: center;
+    height: inherit;
+}
+
+@media (max-width: 700px) {
+    .table{
+        width: 100vw;
+    }
+
+    .clocks{
+        display: none;
+    }    
+}
+
+/* TableLessons.js */
+table{
+    width: 100%;
+    text-align: center;
+}
+
+/* Clock.js */
+.digital-clock{
+    text-align: center;
+    color: #030773;
+    margin-bottom: 5px;
+}
+
+.date{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    margin: 5px 0px;
+}
+
+.time{
+    font-size: 20pt;
+}
+
+.analog-clock{
+    position: relative;
+    justify-content: center;
+    /* align-items: center; */
+    display: grid;
+    grid-template-columns: 50px 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px 50px;
+}
+
+.clock-face{
+    margin: 5px;
+    width: 240px;
+    height: auto;
+}
+
+.clock-hour{
+    -webkit-transform-origin: center 90%;
+    -moz-transform-origin: center 90%;
+    -o-transform-origin: center 90%;
+    -ms-transform-origin: center 90%;
+    transform-origin: center 90%;
+    height: 100px;
+    width: auto;
+    grid-row: 1/5;
+    grid-column: 3/5;
+    margin-left: 15px;
+    margin-top: 35px;
+    
+}
+
+.clock-minute{
+    -webkit-transform-origin: center 88%;
+    -moz-transform-origin: center 88%;
+    -o-transform-origin: center 88%;
+    -ms-transform-origin: center 88%;
+    transform-origin: center 88%;
+    height: 132px;
+    width: auto;
+    grid-row: 1/5;
+    grid-column: 3/5;
+    margin-left: 16px;
+    margin-top: 9px;
+}
+
+.clock-second{
+    -webkit-transform-origin: center 77.5%;
+    -moz-transform-origin: center 77.5%;
+    -o-transform-origin: center 77.5%;
+    -ms-transform-origin: center 77.5%;
+    transform-origin: center 77.5%;
+    height: 152px;
+    width: auto;
+    grid-row: 1/5;
+    grid-column: 3/5;
+    margin-left: 17px;
+    margin-top: 8px;
+    
+}

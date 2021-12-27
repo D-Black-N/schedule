@@ -1,0 +1,17 @@
+.header{
+    background-color: #49688e;
+    color: #fff;
+    font-weight: bold;
+    margin: 0px;
+    text-align: center;
+    font-size: 14pt;
+    height: 20pt;
+    padding-top: 5px;
+}
+
+@media screen and (max-width: 500px) {
+    .header{
+        font-size: 12pt;
+        height: 16pt;
+    }
+}
