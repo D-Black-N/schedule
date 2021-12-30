@@ -5,7 +5,7 @@ import SelectSubject from './SelectSubject';
 const FIO_VALIDATION = /[А-Я][а-я]+ [А-Я]\.[А-Я]\./
 
 
-export const TeacherForm = ( { action, cancel, subjects, createMessage, findTeacher, addTeacher, base, name } ) => {
+export const TeacherForm = ( { action, cancel, subjects, createMessage, findTeacher, addTeacher, base, name, teachers } ) => {
 
     const input_field = document.querySelector('input#name');
     const mes = document.querySelector('.message');
@@ -28,17 +28,17 @@ export const TeacherForm = ( { action, cancel, subjects, createMessage, findTeac
             const selects = elements.querySelectorAll('select');
             let counter = 0;
             while (selects[counter].value !== 'default' && counter < 4) {
-                if (teacher.lessons.filter(num => num === selects[counter].value).length === 0) 
-                    teacher.lessons.push(selects[counter].value)
+                if (teacher.lessons.filter(num => num === selects[counter].value).length === 0)
+                    teacher.lessons.push(selects[counter].value);
                 else {
-                    createMessage("Выбраны несколько одинаковых учебных предметов!")
+                    createMessage("Выбраны несколько одинаковых учебных предметов!");
                     return false;
                 }
                 counter += 1;
             };
             if (counter > 0){
+                addTeacher([...teachers, teacher]);
                 // axios.post(backend_url + '/teachers/create', {})
-                console.log(true);
             }
             else
                 createMessage("Выберите хотя бы один учебный предмет!") 

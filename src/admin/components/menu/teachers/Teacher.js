@@ -53,8 +53,7 @@ export const Teacher = () => {
                                       {...elem} 
                                       onTeacherClick={renderUpdateForm}
                                       teacherState={setTeachers}
-                                      createMessage={setMessage} 
-                                    />
+                                      createMessage={setMessage} />
                         )}
                     </tbody>
                 </table>

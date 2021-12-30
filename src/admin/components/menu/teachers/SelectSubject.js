@@ -33,22 +33,22 @@ const SelectSubject = ( { subjects, counter, changeCounter }) => {
 
     return (
         <>
-            <select name='sub_one'>
-                <option disabled selected value={'default'}>Выберите учебный предмет</option>
+            <select name='sub_one' defaultValue={'default'}>
+                <option disabled value={'default'}>Выберите учебный предмет</option>
                 {subjects.map((element, index) => <SelectOption subject={element} key={index} {...element} />)}
             </select>
             <button id="enable-select" onClick={addSelectSubjectField}>+</button>
-            <select name='sub_two'>
-                <option disabled selected value={'default'}>Выберите учебный предмет</option>
+            <select name='sub_two' defaultValue={'default'}>
+                <option disabled value={'default'}>Выберите учебный предмет</option>
                 {subjects.map((element, index) => <SelectOption subject={element} key={index} {...element} />)}
             </select>
             <button id="disable-select" onClick={removeSelectSubjectField}>-</button>
-            <select name='sub_three'>
-                <option disabled selected value={'default'}>Выберите учебный предмет</option>
+            <select name='sub_three' defaultValue={'default'}>
+                <option disabled value={'default'}>Выберите учебный предмет</option>
                 {subjects.map((element, index) => <SelectOption subject={element} key={index} {...element} />)}
             </select>
-            <select name='sub_four'>
-                <option disabled selected value={'default'}>Выберите учебный предмет</option>
+            <select name='sub_four' defaultValue={'default'}>
+                <option disabled  value={'default'}>Выберите учебный предмет</option>
                 {subjects.map((element, index) => <SelectOption subject={element} key={index} {...element} />)}
             </select>
         </>

@@ -10,7 +10,7 @@ const Autorization = ( { changeLogin } ) => {
 
     function analyze(data){
         if (typeof data.message == 'undefined'){
-            localStorage.setItem('login_name', `${data.admin}`)
+            sessionStorage.setItem('login_name', `${data.admin}`)
             return true
         }
         else{

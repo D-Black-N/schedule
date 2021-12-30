@@ -9,6 +9,7 @@
     display: grid;
     justify-content: center;
     grid-template-rows: 30px 30px 30px 30px 10px 30px;
+    grid-template-columns: 400px;
 }
 
 input[type='text']{
@@ -88,6 +89,7 @@ h2{
     display: grid;
     grid-template-rows: 30px 30px 10px;
     text-align: left;
+    grid-template-columns: 270px;
 }
 
 .subjects-table th, td{
@@ -167,3 +169,84 @@ p.clicked:hover{
     height: 30px;
 }
 
+/* Lesson.js */
+
+.classes-table {
+    display:inline-block;
+    width: 100%;
+}
+
+.lesson {
+    display: inline;
+    width: 100%;
+    text-align: center;
+}
+.lesson-buttons{
+    width: 100%;
+    margin: 15px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 400px;
+    grid-template-rows: repeat(30px, 2);
+    gap: 10px;
+}
+
+.lesson-buttons button {
+    width: 100%;
+    font-size: 14pt;
+    min-height: 16pt;
+    margin: 0;
+}
+
+.classes-table table td {
+    min-width: 30px;
+    padding: 15px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: white;
+}
+
+.classes-table table td.have-element {
+    text-align: center;
+    background-color: #49688e;
+    color: white;
+    font-weight: bold;
+}
+
+.classes-table table td.empty-element {
+    min-width: 30px;
+    padding: 15px;
+    border-style: solid;
+    border-width: 5px;
+}
+
+.classes-table td.have-element:hover {
+    cursor: pointer;
+    background-color: #f4a024;
+}
+
+/* Profile.js */
+.profile {
+    width: 100%;
+    text-align: center;
+}
+
+.profile-form {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 400px;
+    grid-template-rows: 20px 30px 20px 30px 20px 30px 30px;
+    gap: 5px;
+    text-align: left;
+}
+
+.profile-form label {
+    padding-top: 0;
+}
+
+.profile-form #update-profile {
+    font-size: 14pt;
+    height: 100%;
+    width: 50%;
+    min-width: 100px;
+}
