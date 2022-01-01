@@ -5,8 +5,6 @@ import Teacher from './menu/teachers/Teacher';
 import Lesson from './menu/lessons/Lesson';
 import Profile from './menu/profile/Profile';
 
-// import './Menu.css';
-
 const Menu = ( { exitButtonClick } ) => {
 
     function openSubjects(event){

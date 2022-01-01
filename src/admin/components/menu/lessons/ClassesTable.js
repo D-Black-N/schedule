@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ClassesRow from './ClassesRow';
-import EditSchedule from './EditSchedule';
+import Schedule from './Schedule';
 
 const ClassesTable = ({ classes, onReturnClick }) => {
 
@@ -9,7 +9,7 @@ const ClassesTable = ({ classes, onReturnClick }) => {
 
     const openSchedule = (event) => {
         event.preventDefault();
-        ReactDOM.render(<EditSchedule returnMain={onReturnClick} />, document.querySelector('.content'));
+        ReactDOM.render(<Schedule returnMain={onReturnClick} />, document.querySelector('.content'));
     };
 
     return (

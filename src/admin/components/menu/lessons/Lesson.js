@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import ClassesTable from './ClassesTable';
-import NewSchedule from './NewSchedule';
+import Schedule from './Schedule';
 
 const Lesson = () => {
 
@@ -14,7 +14,7 @@ const Lesson = () => {
 
     const newSchedule = (event) => {
         event.preventDefault();
-        ReactDOM.render(<NewSchedule returnMain={go_back} />, document.querySelector('.content'))
+        ReactDOM.render(<Schedule returnMain={go_back} />, document.querySelector('.content'))
     };
 
     const deleteAllSchedule = (event) => {

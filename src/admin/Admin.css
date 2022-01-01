@@ -250,3 +250,90 @@ p.clicked:hover{
     width: 50%;
     min-width: 100px;
 }
+
+/* NewSchedule.js */
+.new-schedule {
+    width: 100%;
+    height: 85vh;
+    text-align: left;
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.action {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+    grid-template-rows: 30px;
+    margin: 10px 0px;
+}
+
+.action label {
+    margin: 0px 10px;
+}
+
+.action #submit {
+    height: 100%;
+    font-size: 12pt;
+    width: 48%;
+}
+
+.action button {
+    font-size: 12pt;
+}
+
+.create-schedule {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.lessons-table {
+    width: 100%;
+    display: table;
+    border-spacing: 0px 7px;
+}
+
+.week-header {
+    width: 99%;
+    text-align: center;
+    font-size: 14pt;
+    height: 23px;
+    background-color: #49688e;
+    color: white;
+    font-weight: 500;
+}
+
+.lessons-table td {
+    height: 25px;
+}
+
+.lessons-table .td-select {
+    width: 30%;
+}
+
+.subject-select, .teacher-select {
+    width: 100%;
+    height: 100%;
+    margin-left: 2px;
+}
+
+.td-time {
+    width: 20%;
+    height: 100%;
+}
+
+.td-time .hour, .td-time .minute {
+    width: 40%;
+    margin-left: 5px;
+}
+
+.td-time .minute {
+    margin-left: 5px;
+}
+
+@media (max-width: 1170px) {
+    
+}

@@ -18,7 +18,7 @@ const Profile = () => {
             <h3>Профиль администратора</h3>
             <form className='profile-form' onSubmit={updateProfile}>
                 <label>Логин</label>
-                <input type='text' id='login' />
+                <input type='text' id='login' value={name} />
                 <label>Новый пароль</label>
                 <input type='password' id='new-password' />
                 <label>Подтвердите пароль</label>
