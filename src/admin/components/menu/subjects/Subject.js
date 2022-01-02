@@ -24,7 +24,7 @@ const Subject = () => {
 
     // нажатие на учебный предмет для обновления
     const renderUpdateForm = (event) => {
-        document.querySelector('.add-subject').querySelector('h3').innerText = "Обновление учебного предмета";
+        document.querySelector('.add').querySelector('h3').innerText = "Обновление учебного предмета";
         event.preventDefault();
         const sub_name = event.target.innerText;
         setAction('update');
@@ -35,7 +35,7 @@ const Subject = () => {
     
     const renderAddFrom = () => {
         setAction('enter');
-        document.querySelector('.add-subject').querySelector('h3').innerText = "Добавление учебного предмета";
+        document.querySelector('.add').querySelector('h3').innerText = "Добавление учебного предмета";
     };
 
     return (
@@ -65,7 +65,7 @@ const Subject = () => {
                 <h3>Добавление учебного предмета</h3>
                 <SubjectForm findSubject={find}
                              action={action} 
-                             postMessage={setMessage} 
+                             createMessage={setMessage} 
                              subjects={subjects} 
                              addSubject={setSubjects}
                              name={name}

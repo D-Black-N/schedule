@@ -1,6 +1,7 @@
 import TableLessons from "./TableLessons";
 import Clock from "./Clock";
 import React, {useState, useEffect} from 'react';
+import EmailRow from "./EmailRow";
 
 const Content = () => {
 
@@ -19,20 +20,23 @@ const Content = () => {
     }
 
     useEffect(() => {
-        document.querySelector('.junior').classList.add('clicked')
+        document.querySelector('.elementary').classList.add('clicked');
     }, [])
 
     return(
         <div className="content">
             <div className="table">
                 <div className="change-buttons">
-                    <div className="junior" onClick={handleClick}>1-4 классы</div>
-                    <div className="senior" onClick={handleClick}>5-11 классы</div>
+                    <div className="elementary" onClick={handleClick}>1-4 классы</div>
+                    <div className="high" onClick={handleClick}>5-11 классы</div>
                 </div>
-                <TableLessons />
+                <TableLessons class_group={selection} />
             </div>
             <div className="clocks">
                 <Clock />   
+            </div>
+            <div className="scrolling-text">
+                <EmailRow />
             </div>
         </div>
     );

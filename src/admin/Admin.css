@@ -79,6 +79,10 @@ h2{
     text-align: center;
 }
 
+.subjects-table, .teachers-table, .classes-table table {
+    width: 100%;
+}
+
 .add{
     width: 50%;
     text-align: center;

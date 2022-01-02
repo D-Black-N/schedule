@@ -57,7 +57,6 @@ const SubjectForm = ( { subjects, findSubject, action, createMessage, addSubject
             input_field.blur();
         }, 5000);
         // subjects.map(item => item.id == event.target.update.id ? item.name = event.target.update.value : item);
-        // console.log(subjects);
     };
 
     // нажатие на кнопку "Отмена"

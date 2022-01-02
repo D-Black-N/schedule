@@ -72,36 +72,37 @@
     display: flex;
     margin: 10px;
     height: 350px;
+    flex-wrap: wrap;
 }
 
 .table{
-    width: 65vw;
+    width: 63%;
     height: inherit;
-    padding-left: 4vw;
+    padding-left: 2%;
 }
 
 .change-buttons {
     display: flex;
 }
 
-.junior, .senior {
+.elementary, .high {
     background-color: #49688e;
     padding: 2px 10px;
     border-right: 1px solid white;
     color: white;
 }
 
-.junior.clicked, .senior.clicked {
+.elementary.clicked, .high.clicked {
     background-color: #f4a024;
 }
 
-.junior:hover, .senior:hover {
+.elementary:hover, .high:hover {
     cursor: pointer;
     background-color: #f4a024;
 }
 
 .clocks{
-    width: 35vw;
+    width: 35%;
     text-align: center;
     height: inherit;
 }
@@ -124,6 +125,13 @@ table.schedule {
     padding: 0;
     border-spacing: 0px;
     border-collapse: collapse;
+    position: relative;
+    animation-name: table-scroll;
+    animation-duration: 6s;
+    animation-delay: 1.5s;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
 }
 
 table.schedule th {
@@ -147,24 +155,19 @@ table.schedule tbody tr:nth-child(even){
 
 .table-border{
     border: 2px solid #49688e;
-    height: 100%;
-    overflow-y: scroll;
+    height: 90%;
     overflow-x: auto;
     scrollbar-width: none;
 }
 
 table.schedule tbody {
     text-align: center;
-    animation-name: table-scroll;
-    animation-duration: 10s;
-    animation-timing-function: linear;
-    animation-direction: alternate-reverse;
-    animation-iteration-count: infinite;
+    overflow-y: scroll;
 }
 
 @keyframes table-scroll {
-    from   { transform: translateY(0%);}
-	to     { transform: translateY(-100%);}
+    from   { transform: translateY(38%);}
+	to     { transform: translateY(0%);}
 }
 
 /* Clock.js */
@@ -239,6 +242,13 @@ table.schedule tbody {
     grid-row: 1/5;
     grid-column: 3/5;
     margin-left: 17px;
-    margin-top: 8px;
-    
+    margin-top: 8px;    
+}
+
+/* EmailRow.js */
+.scrolling-text {
+    border: 2px solid #49688e;
+    height: 20%;
+    width: 100%;
+    margin-left: 2%;
 }

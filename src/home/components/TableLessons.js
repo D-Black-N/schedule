@@ -4,7 +4,7 @@ import LessonRow from './LessonRow';
 
 const backend_url = 'http://localhost:3001/api/v1';
 
-const TableLessons = () => {
+const TableLessons = ({class_group}) => {
 
     const [lessons, setLessons] = useState([]);
 
@@ -37,7 +37,7 @@ const TableLessons = () => {
         }
     }, []);
 
-    // if (lessons.length !== 0)
+    if (lessons.length !== 0)
         return(
             <div className='table-border'>
                 <table className="schedule">
@@ -54,10 +54,10 @@ const TableLessons = () => {
                 </table>
             </div>
         );
-    // else 
-    //     return (
-    //         <div className='empty-schedule-table'>В данный момент в учебном заведении отсутсвуют уроки</div>
-    //     );
+    else 
+        return (
+            <div className='empty-schedule-table'>В данный момент в учебном заведении отсутсвуют уроки</div>
+        );
 };
 
 export default TableLessons;
