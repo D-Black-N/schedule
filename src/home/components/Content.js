@@ -13,14 +13,16 @@ const Content = () => {
         if (clicked != null )
             clicked.classList.remove('clicked');
         event.target.classList.add('clicked');
-        if (selection === 0)
-            setSelection(1);
-        else
+        if (selection === 1)
             setSelection(0);
+        else
+            setSelection(1);
+        console.log(selection)
     }
 
     useEffect(() => {
         document.querySelector('.elementary').classList.add('clicked');
+        console.log(selection)
     }, [])
 
     return(

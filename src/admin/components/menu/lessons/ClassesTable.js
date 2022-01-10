@@ -25,8 +25,7 @@ const ClassesTable = ({ classes, onReturnClick }) => {
                                                                 row={element} 
                                                                 key={index} 
                                                                 {...element} 
-                                                                handleOpenClass={openSchedule}
-                                                                 />
+                                                                handleOpenClass={openSchedule} />
                     )}
                 </tbody>
             </table>  

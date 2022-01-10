@@ -166,8 +166,8 @@ table.schedule tbody {
 }
 
 @keyframes table-scroll {
-    from   { transform: translateY(38%);}
-	to     { transform: translateY(0%);}
+    from   { transform: translateY(0%);}
+	to     { transform: translateY(-39%);}
 }
 
 /* Clock.js */
@@ -248,7 +248,9 @@ table.schedule tbody {
 /* EmailRow.js */
 .scrolling-text {
     border: 2px solid #49688e;
-    height: 20%;
+    height: 17%;
     width: 100%;
     margin-left: 2%;
+    padding: 20px;
+    font-size: 14pt;
 }
