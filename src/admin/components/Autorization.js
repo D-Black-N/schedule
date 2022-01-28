@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 // import './Autorization.css';
 
-const backend_url = 'http://localhost:3001/api/v1';
+const AUTORIZATION_URL = 'http://localhost:3001/api/v1/admin';
 
 const Autorization = ( { changeLogin } ) => {
 
-    let [message, setMessage] = useState("");
+    const [message, setMessage] = useState("");
 
-    function analyze(data){
+    const analyze = (data) => {
         if (typeof data.message == 'undefined'){
+            sessionStorage.setItem('login_id', `${data.admin}`)
             sessionStorage.setItem('login_name', `${data.admin}`)
             return true
         }
@@ -19,11 +20,11 @@ const Autorization = ( { changeLogin } ) => {
         } 
     }
 
-    function autorization(event){
+    const autorization = (event) => {
         event.preventDefault();
-        let fields = event.target;
-        let params = {name: fields.login.value, password: fields.password.value};
-        axios.post(backend_url + '/autorize', params)
+        const fields = event.target;
+        const params = {name: fields.login.value, password: fields.password.value};
+        axios.post('http://localhost:3001/api/v1/autorize', params)
              .then(res => analyze(res.data))
              .then(bool => changeLogin(bool))
     ;}

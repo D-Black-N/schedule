@@ -10,9 +10,8 @@ const SelectSubject = ( { subjects, counter, changeCounter }) => {
         changeCounter(prev => prev += 1);
         document.querySelectorAll('select')[counter].style.cssText = `grid-row: ${counter + 3}; display: inline;`;
         document.querySelector('.buttons').style.cssText = `grid-row: ${counter + 4}`;
-        if (counter === 1){
+        if (counter === 1)
             document.querySelector('#disable-select').style.display = 'inline';
-        }
         if (counter === 3)
             document.querySelector('#enable-select').disabled = true;
     };

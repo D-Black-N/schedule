@@ -4,7 +4,7 @@ export const SelectOption = ({ subject }) => {
 
     return (
         <>
-            <option value={subject.name}>
+            <option value={subject.id}>
                 {subject.name}
             </option>   
         </>

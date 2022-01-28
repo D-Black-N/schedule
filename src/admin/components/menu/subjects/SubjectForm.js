@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const backend_url = 'http://localhost:3001/api/v1';
+const SUBJECT_URL = 'http://localhost:3001/api/v1/subject/';
 
 const SubjectForm = ( { subjects, findSubject, action, createMessage, addSubject, name, base } ) => {
 
@@ -24,10 +24,10 @@ const SubjectForm = ( { subjects, findSubject, action, createMessage, addSubject
             }
             else {
                 input_field.value = "";
+                axios.post(SUBJECT_URL, {subject: {name: new_subject}});
                 mes.style.color = 'green';
                 createMessage("Учебный предмет добавлен успешно!");
                 addSubject([...subjects, {name: new_subject}])
-                // axios.post(backend_url + '/subject/create', { name: new_subject });
             }
         };
         setTimeout(() => {
@@ -40,6 +40,7 @@ const SubjectForm = ( { subjects, findSubject, action, createMessage, addSubject
     const updateSubject = (event) => {
         event.preventDefault();
         const update_subject = event.target.name.value;
+        const subject_id = event.target.subject_id.value;
         mes.style.color = 'red';
         if (update_subject === "") {
             createMessage("Заполните поле!");
@@ -48,6 +49,7 @@ const SubjectForm = ( { subjects, findSubject, action, createMessage, addSubject
         else {
             subjects.map( item => item.name == name ? item.name = update_subject : item);
             input_field.value = "";
+            axios.patch(SUBJECT_URL + `${subject_id}`, {subject: {name: update_subject}});
             mes.style.color = 'green';
             createMessage("Учебный предмет обновлен успешно!");
             base();
@@ -60,8 +62,10 @@ const SubjectForm = ( { subjects, findSubject, action, createMessage, addSubject
     };
 
     // нажатие на кнопку "Отмена"
-    const cancel = () => {
+    const cancel = (event) => {
+        event.preventDefault();
         input_field.value = "";
+        document.querySelector("#update_subject_id").value = "";
         base();
     };
 
@@ -69,6 +73,7 @@ const SubjectForm = ( { subjects, findSubject, action, createMessage, addSubject
         <>
             <form className='subject-form' onSubmit={ action == 'enter' ? postSubject : updateSubject}>
                 <label>Наименование</label>
+                <input type={'hidden'} name='subject_id' id='update_subject_id' />
                 <input type="text" id='name' />
                 <div className='buttons'>
                     <input type="submit" value={action == 'enter' ? 'Добавить' : "Обновить"} id='submit'/>

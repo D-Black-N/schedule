@@ -3,7 +3,7 @@ import axios from 'axios';
 import SubjectForm from './SubjectForm';
 import SubjectRow from './SubjectRow';
 
-const backend_url = 'http://localhost:3001/api/v1';
+const SUBJECT_URL = 'http://localhost:3001/api/v1/subject/';
 
 const Subject = () => {
 
@@ -12,9 +12,12 @@ const Subject = () => {
     const [action, setAction] = useState('enter');
     const [name, setName] = useState('');
 
+    const mes = document.querySelector('.message');
+
+
     // метод загрузки данных об учебных предметах из API
     useEffect(() => {
-        axios.get(backend_url + '/subjects').then(res => setSubjects(res.data))
+        axios.get(SUBJECT_URL).then(res => setSubjects(res.data))
     }, []);
 
     // метод поиска учебного предмета при добавлении
@@ -24,13 +27,13 @@ const Subject = () => {
 
     // нажатие на учебный предмет для обновления
     const renderUpdateForm = (event) => {
-        document.querySelector('.add').querySelector('h3').innerText = "Обновление учебного предмета";
         event.preventDefault();
-        const sub_name = event.target.innerText;
+        document.querySelector('.add').querySelector('h3').innerText = "Обновление учебного предмета";
         setAction('update');
-        const subject = find(sub_name)[0].name
-        setName(subject);
-        document.querySelector('input#name').value = subject; 
+        const subject = find(event.target.innerText)[0]
+        setName(subject.name);
+        document.querySelector('input#update_subject_id').value = subject.id;
+        document.querySelector('input#name').value = subject.name; 
     };
     
     const renderAddFrom = () => {
@@ -38,6 +41,22 @@ const Subject = () => {
         document.querySelector('.add').querySelector('h3').innerText = "Добавление учебного предмета";
     };
 
+    const destroySubjectClick = (event) => {
+        event.preventDefault();
+        if(window.confirm('Вы действительно хотите удалить?')){
+            const element = event.target.parentNode.parentNode
+            setSubjects(prev => 
+                prev.filter(elem => elem.name != element.querySelector('p').innerText)
+            );
+            const subj_id = element.querySelector("#subject_id").value;
+            axios.delete(SUBJECT_URL + `${subj_id}`).then(res => console.log(res.data));
+            mes.style.color = 'red';
+            setMessage("Учебный предмет удален успешно!");
+            setTimeout(() => {
+                setMessage("");
+            }, 5000);
+        }
+    }
     return (
         <>
             <div className='list'>
@@ -51,12 +70,11 @@ const Subject = () => {
                     </thead>
                     <tbody>
                         {subjects.map((elem, index) =>
-                            <SubjectRow subject={elem.name} 
+                            <SubjectRow subject={elem} 
                                       key={index} 
                                       {...elem} 
                                       onSubjectClick={renderUpdateForm}
-                                      subjectState={setSubjects}
-                                      createMessage={setMessage} />
+                                      removeSubject={destroySubjectClick} />
                         )}
                     </tbody>
                 </table>

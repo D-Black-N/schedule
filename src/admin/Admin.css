@@ -84,7 +84,7 @@ h2{
 }
 
 .add{
-    width: 50%;
+    width: 45%;
     text-align: center;
 }
 
@@ -127,10 +127,6 @@ p.clicked:hover{
 }
 
 /* Teachers.js */
-.teacher-subjects{
-    padding-left: 6%;
-}
-
 .select-subject {
     display: none;
 }

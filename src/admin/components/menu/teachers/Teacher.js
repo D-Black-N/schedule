@@ -13,32 +13,65 @@ export const Teacher = () => {
     const [action, setAction] = useState('enter');
     const [name, setName] = useState('');
     const [subjects, setSubjects] = useState([]);
+    const [counter, setCounter] = useState(0);
 
     // загрузка данных о преподавателях из API
     useEffect(() => {
-        axios.get(backend_url + '/teachers').then(res => setTeachers(res.data));
-        axios.get(backend_url + '/subjects').then(res => setSubjects(res.data));
+        axios.get(backend_url + '/teacher').then(res => setTeachers(res.data));
+        axios.get(backend_url + '/subject').then(res => setSubjects(res.data));
     }, []);
 
     // открытие формы обновления информации о преподавателе
     const renderUpdateForm = (event) => {
-        document.querySelector('.add-subject').querySelector('h3').innerText = "Обновление данных о преподавателе";
         event.preventDefault();
-        const sub_name = event.target.innerText;
+        const form = document.querySelector('.add'); 
+        form.querySelector('h3').innerText = "Обновление данных о преподавателе";
+        const target = event.target;
+        const teacher_id = target.parentNode.querySelector("input").value;
+        form.querySelector("input#teacher_id").value = teacher_id;
         setAction('update');
-        const subject = find(sub_name)[0].name
-        setName(subject);
-        document.querySelector('input#name').value = subject; 
+        const teacher = find(teacher_id);
+        setCounter(teacher.subjects.length);
+        setName(teacher.teacher.fio);
+        document.querySelector('input#name').value = teacher.teacher.fio;
+        const selectors = document.querySelectorAll("select");
+        const buttons = form.querySelector(".buttons");
+        teacher.subjects.map((elem, index) => {
+            selectors[index].value = elem.id;
+            selectors[index].style.cssText = `grid-row: ${index + 3}; display: inline;`;
+            buttons.style.cssText = `grid-row: ${index + 4};`;
+        });
     };
 
     // метод поиска преподавателя в списке teachers
-    const find = (teacher_fio) => {
-        return 0;
+    const find = (teacher_id) => {
+        return teachers.filter(elem => elem.teacher.id == teacher_id)[0]
+    };
+
+    // метод удаления преподавателя из списка
+    const destroyTeacherClick = (event) => {
+        event.preventDefault();
+        const row = event.target.parentNode.parentNode;
+        const teacher_id = row.querySelector("input").value
+        axios.delete(backend_url + `/teacher/${teacher_id}`)
+             .then(res => setTeachers(prev => prev.filter(value => value.teacher.id != res.data.id)))
+        document.querySelector(".message").style.color = 'red';
+        setMessage("Преподаватель успешно удален из списка!");
     };
 
     // метод открытия формы добавления данных о преподавателе
-    const renderAddForm = () => {
-
+    const renderAddForm = (event) => {
+        setAction("enter");
+        const form = document.querySelector('.add'); 
+        form.querySelector('h3').innerText = "Добавление данных о преподавателе";
+        form.querySelector("input#name").value = "";
+        document.querySelectorAll("select").forEach((element, index) => {
+            element.value = "default";
+            setCounter(0);
+            if (index > 0)
+                element.style.cssText = `grid-row: ${counter + 3}; display: none;`;
+            event.target.parentNode.style.cssText = `grid-row: 4;`;
+        });
     }
 
     return (
@@ -47,13 +80,12 @@ export const Teacher = () => {
                 <h3>Список преподавателей</h3>
                 <table className='teachers-table'>
                     <tbody>
-                        {teachers.map((elem, index) =>
-                            <TeacherRow teacher={elem} 
+                        {teachers.map((elem, index) => 
+                            <TeacherRow t={elem} 
                                       key={index} 
                                       {...elem} 
                                       onTeacherClick={renderUpdateForm}
-                                      teacherState={setTeachers}
-                                      createMessage={setMessage} />
+                                      deleteTeacher={destroyTeacherClick} />
                         )}
                     </tbody>
                 </table>
@@ -66,8 +98,9 @@ export const Teacher = () => {
                              teachers={teachers} 
                              addTeacher={setTeachers}
                              name={name}
-                             base={renderAddForm}
-                             subjects={subjects} />
+                             subjects={subjects}
+                             changeCounter={setCounter}
+                             cancel={renderAddForm} />
                 <div className='message'>
                     {message}
                 </div>
