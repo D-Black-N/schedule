@@ -8,12 +8,12 @@ const Admin = () => {
     let [login, setLogin] = useState(false);
 
     function exitButtonClick(){
-        sessionStorage.removeItem('login_name');
+        sessionStorage.removeItem('login_id');
         setLogin(false);
     };
 
     useEffect(() => {
-        if (sessionStorage.getItem('login_name'))
+        if (sessionStorage.getItem('login_id'))
             setLogin(true);
         else
             setLogin(false);
